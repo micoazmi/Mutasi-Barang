@@ -33,8 +33,8 @@ Route::prefix('mutasi')->middleware('auth:api')->group(function () {
 });
 
 Route::middleware('auth:api')->get('/barang/{id}/history-mutasi', [BarangController::class, 'historyMutasiBarang']);
-Route::middleware('auth:api')->get('/user/history-mutasi', [MutasiController::class, 'historyMutasiUser']);
-Route::get('/users/{id}/mutasi-history', [MutasiController::class, 'historyMutasiByUserId']);
+Route::middleware('auth:api')->get('/users/{id}/mutasi-history', [MutasiController::class, 'historyMutasiByUserId']);
+
 
 Route::post('/register',[AuthController::class,'register']);
 Route::post('/login', [AuthController::class, 'login']);

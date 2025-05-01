@@ -36,24 +36,9 @@ class MutasiController extends Controller
         return Mutasi::destroy($id);
     }
 
-    public function historyMutasiUser(Request $request)
-    {
-        $user = auth()->user();
-    
-        if (!$user) {
-            return response()->json(['error' => 'Unauthenticated or user not found'], 401);
-        }
-    
-        $mutasiHistory = $user->mutasis()->with('barang')->get(); 
-    
-        return response()->json([
-            'user' => $user,
-            'mutasi_history' => $mutasiHistory
-        ]);
-    }
 
     public function historyMutasiByUserId($id)
-{
+    {
     $user = User::findOrFail($id); 
 
     $mutasiHistory = $user->mutasis()->with('barang')->get();
@@ -62,6 +47,6 @@ class MutasiController extends Controller
         'user' => $user,
         'mutasi_history' => $mutasiHistory
     ]);
-}
+    }
 
 }
